@@ -6,19 +6,18 @@
         <title>Login</title>
 
         <script>
-            function get_cookies(){
+            function get_cookies(cname){
                 let name = cname + "=";
                 let decodedCookie = decodeURIComponent(document.cookie);
-                let ca = dcodedCookie.split(";");
+                let ca = decodedCookie.split(";");
 
-                for (i = 0; i < ca.length; i++ ){
+                for (let i = 0; i < ca.length; i++ ){
                     let c = ca[i];
-                    while (c.chartAt(0) == ''){
+                    while (c.charAt(0) == ' '){
                         c= c.substring(1);
                     }
                     if (c.indexOf(name) == 0){
                         return c.substring(name.length, c.length);
-
                     }
                 }
                 return "";
@@ -27,9 +26,9 @@
             function check_if_user_has_logged_on_this_device(){
                 let username = get_cookies("user_email");
                 if (username != ""){
-                    window.location("home.html");
+                    window.location.href = "home.html";
                 } else {
-                    window.location("login.html");
+                    window.location.href = "login.html";
                 }
             }
         </script>
@@ -42,5 +41,5 @@
 
         <button onclick="check_if_user_has_logged_on_this_device()">click Me</button>
 
-        
     </body>
+</html>
