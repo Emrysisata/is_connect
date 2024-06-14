@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Login</title>
+
+        <script>
+            function get_cookies(){
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = dcodedCookie.split(";");
+
+                for (i = 0; i < ca.length; i++ ){
+                    let c = ca[i];
+                    while (c.chartAt(0) == ''){
+                        c= c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0){
+                        return c.substring(name.length, c.length);
+
+                    }
+                }
+                return "";
+            }
+
+            function check_if_user_has_logged_on_this_device(){
+                let username = get_cookies("user_email");
+                if (username != ""){
+                    window.location("home.html");
+                } else {
+                    window.location("login.html");
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="check_if_user_has_logged_on_this_device()">
+        <noscript>
+            <h1>Please enable javascript to use this app</h1>
+        </noscript>
+
+        
+    </body>
