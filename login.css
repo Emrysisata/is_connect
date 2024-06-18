@@ -11,7 +11,10 @@ body {
 }
 
 #app_icon {
-width: 100px;
+    width: 100px;
+    position: relative;
+    top: 30px;
+
 }
 
 #app_name_label {
