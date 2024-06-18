@@ -10,6 +10,10 @@ body {
     vertical-align: middle;
 }
 
+#app_icon {
+width: 100px;
+}
+
 #app_name_label {
     color: #203a2b;
     font-size: 2em;
