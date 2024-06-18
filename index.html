@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Login</title>
+
+        <link rel="stylesheet" type="text/css" href="login.css">
+
+    </head>
+    <body>
+
+        <img id="app_icon" src="imges/app_icon.png">
+
+        <p id="app_name_label">IS Connect</p>
+
+        <p id="login_text_label">Login Credentials</p>
+
+        <form id="login_details_form" method="post" action="login.php">
+
+            <input type="email" id="email" name="email" placeholder="Email">
+
+            <br>
+
+            <input type="password" id="password" name="password" placeholder="Password">
+
+        </form>
+
+
+        <a id="forgot_password_link" href="forgot_password.html">Forgot password</a>
+
+        <a id="signup_link" href="signup.html">Sign up!</a>
+        
+        <br>
+
+        <div>
+
+            <button id="login_button" onclick="login()">Login</button>
+
+        </div>
+
+        <script>
+            function login(){
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                // Regular expression for basic email validation
+                var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        
+                if (email === null || email.trim() === "" || password === null || password.trim() === ""){
+                    alert("Please enter email and password to login");
+
+                } else if (!regex.test(email)) {
+            alert("Please enter a valid email address");
+        }
+             
+            //submit the form
+            document.getElementById("login_details_form").submit();
+            }
+
+        </script>
+        
+
+    </body>
+</html>
