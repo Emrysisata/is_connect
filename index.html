@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="login.css">
 
     </head>
-    <body>
+    <body onload= "checkCookie()">
 
         <img id="app_icon" src="imges/app_icon.png">
 
@@ -55,6 +55,37 @@
              
             //submit the form
             document.getElementById("login_details_form").submit();
+            }
+
+            function getCookie(cookieName){
+                //getting the cookie data for the login
+                let name = cookieName + "=";
+                let decodedCookie = decodedURIComponent(document.cookie);
+                let ca = decodedCookie.split(";");
+                for(let i =0; i < ca.length; i++){
+                    let c = ca[i];
+                    while (ca.charAt(0) == " "){
+                        c = c.substring(1);
+                    }
+                    if (ca.indexOf(name) == 0){
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie(){
+
+                //attempting to read user login credential from the device
+                let userEmail = getCookie("userEmail");
+                let userPassword = getCookie("userPassword");
+
+                //checking if the device already has a user credential data
+                if (userEmail != "" && userPassword != ""){
+                    //we login for the individual
+                }
+                
+
             }
 
         </script>
