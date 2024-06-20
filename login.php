@@ -2,6 +2,7 @@
 //reading the data sent to the server for login
 $password = $_POST["password"];
 $email = $_POST["email"];
+$rememberLogincheckBox = $_POST["rememberLogincheckBox"];
 
 
 
@@ -24,14 +25,16 @@ if (!$connection){
 echo  "connected to database successfully";
 
 //setting the sql query to read from the database tocheck if user login details is correct
-sql="INSERT INTO STUDENT VALUES(" . $userFirsName .","$userLastName .",". $password .","$email .","$id .","$phonenumber .")";
+sql="SELECT * FROM STUDENT WHERE EMAIL = ? AND PASSWORD = ?";
 
 //attempting to write on the STUDENT table
 if(mysqli_query($conn,$sql)){
 
-    echo "new data insert into table successfully";
+    //redirecting user to the home page
+   header('Location: http://www.home.com');
+   exit;
 
-  } esle
+  } else{
 
   echo "Error:" .$sql .mysqli_error($conn);
 
