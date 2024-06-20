@@ -25,26 +25,36 @@ if (!$connection){
 echo  "connected to database successfully";
 
 //setting the sql query to read from the database tocheck if user login details is correct
-sql="SELECT * FROM STUDENT WHERE EMAIL = ? AND PASSWORD = ?";
+sql="SELECT * FROM STUDENT WHERE EMAIL = " + $email + " AND PASSWORD = " + $password;
 
-//attempting to write on the STUDENT table
+//attempting to read on the STUDENT table
 if(mysqli_query($conn,$sql)){
+
+   //saving user details for future auto login
+   saveUserLoginDetails("userEmail", $email);
+   saveUserLoginDetails("userPassword", $password);
 
     //redirecting user to the home page
    header('Location: http://www.home.com');
    exit;
 
   } else{
+   
+   //closing the connection to the database
+   mysqli_close($conn);
+   
+   //redirecting user to the login page
+   header('Location: http://www.example.com');
+   exit;
 
-  echo "Error:" .$sql .mysqli_error($conn);
+  
 
 }
 
-//closing the connection to the database
-mysqli_close($conn);
+function saveUserLoginDetails($userDataName, $userDataValue){
+   setcookie($userDataName, $userDataValue, time() + (86400 * 30), "/");
+}
 
-//redirecting user to the login page
-header('Location: http://www.example.com');
-exit;
+   
  
 ?>
