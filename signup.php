@@ -9,9 +9,9 @@ $phonenumber = $_POST["phonenumber"];
 
 
 // These are info needed to connect to the database
-$databaseServerName = "";
-$databaseUserName = "";
-$databaseUserPassword = "";
+$databaseServerName = "localhost:3306";
+$databaseUserName = "1d22274795_isconnect";
+$databaseUserPassword = "Ipamuslis2@is";
 
 
 //These code below is use to create connection to our student database
@@ -44,7 +44,7 @@ if(mysqli_query($conn,$sql)){
 mysqli_close($conn);
 
 //redirecting user to the login page
-header('Location: http://www.example.com');
+header('Location: https://github.dev/Emrysisata/is_connect/blob/main/index.html');
 exit;
  
 ?>
