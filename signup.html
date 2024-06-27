@@ -39,35 +39,79 @@
 
 <body>
 	
-	<img src="https://emrysisata.github.io/is_connect/imges/app_icon.png" width="60px" height="60px" border-radius= "70" >
+	
+	 <div class="top_circle_divs"></div>
+	<div class="top_circle_divs"></div>
 
-	 <p>Jaden_550</p>
-     
- </br>
-  <div id="ty">
-      <h2>SIGN UP</h2><br>
+	<h1>IS</h1>
+	<h2>CONNECT</h2>
+	<h4>Login Credentials</h4>
 
-     <label>First Name</label><br>
-     
-     <input type="text" name="jo"><br>
-     <br>
-     <label>Last Name</label><br>
-     <input type="text" name="jo"><br>
-     <br>
-     <label>Email</label><br>
-     <input type="text" name="jo"><br>
-     <br>
-     <label>Phone</label><br>
-     <input type="text" name="jo" size="20"><br>
-     <br>
-     
+	<form method="POST" action="login.php">
 
-  </div><br>
-  <br>
-  <div id="gi">
-    
-   <button> <a href="credential.htm">Next</a></button>
-  </div>
+		<input type="email" name="email" placeholder="Email">
+		<input type="password" name="password" placeholder="Password">
+		<label for="remember_login_details_toggle">Remember Me!</label>
+		<input type="checkbox" name="remember_login_details_toggle" value="Remember_is_true">
+	</form>
+
+	<a>Forgot password</a>
+	<a>Sign Up!</a>
+
+	<button onclick=""
+		
+     
+<script>
+            function login(){
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                // Regular expression for basic email validation
+                var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        
+                if (email === null || email.trim() === "" || password === null || password.trim() === ""){
+                    alert("Please enter email and password to login");
+
+                }
+		else if (!regex.test(email)) {
+            alert("Please enter a valid email address");
+        }
+             
+            //submit the form
+            document.getElementById("login_details_form").submit();
+            }
+
+            function getCookie(cookieName) {
+            // Get the value of a cookie by name
+            let name = cookieName + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return '';
+        }
+
+            function checkCookie(){
+
+                //attempting to read user login credential from the device
+                let userEmail = getCookie("userEmail");
+                let userPassword = getCookie("userPassword");
+
+                //checking if the device already has a user credential data
+                if (userEmail != "" && userPassword != ""){
+                    //we login for the individual
+                }
+                
+
+            }
+
+        </script>
 
 </body>
 </html>
